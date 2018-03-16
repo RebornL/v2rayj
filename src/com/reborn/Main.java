@@ -86,7 +86,7 @@ public class Main extends Application {
                     ".fxml"));
             AnchorPane ServerTable = (AnchorPane)loader.load();
 
-            //set person overview into the center of root layout
+            //set server overview into the center of root layout
             rootlayout.setCenter(ServerTable);
 
 //            ServerTableController controller = loader.getController();
@@ -143,6 +143,7 @@ public class Main extends Application {
             return false;
         }
     }
+
 
     public Stage getPrimaryStage() {
         return primaryStage;
