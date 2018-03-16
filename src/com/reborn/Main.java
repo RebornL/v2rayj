@@ -4,6 +4,8 @@ import com.reborn.controller.PersonEditDialogController;
 import com.reborn.controller.ServerTableController;
 import com.reborn.model.Person;
 import com.reborn.controller.PersonOverviewController;
+import com.reborn.model.Server;
+import com.reborn.model.Vmess;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,10 +26,15 @@ public class Main extends Application {
 
     private ObservableList<Person> personData = FXCollections
             .observableArrayList();
+    private ObservableList<Server> serversData = FXCollections
+            .observableArrayList();
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         //add some person data
+/*
         personData.add(new Person("Hans", "Muster"));
         personData.add(new Person("Ruth", "Muster"));
         personData.add(new Person("Heiz", "Muster"));
@@ -37,6 +44,19 @@ public class Main extends Application {
         personData.add(new Person("Anna", "Muster"));
         personData.add(new Person("Stefan", "Muster"));
         personData.add(new Person("Martin", "Muster"));
+*/
+        serversData.add(new Vmess(" ","vmess", "vpn", "112.11.22.11",
+                "aes-128-gcm", "9999", " ", "asdas123212adasdas", "64",
+                "tcp"));
+        serversData.add(new Vmess(" ","vmess", "vpn", "112.11.22.11",
+                "aes-128-gcm", "9999", " ", "asdas123212adasdas", "64",
+                "tcp"));
+        serversData.add(new Vmess(" ","vmess", "vpn", "112.11.22.11",
+                "aes-128-gcm", "9999", " ", "asdas123212adasdas", "64",
+                "tcp"));
+        serversData.add(new Vmess(" ","vmess", "vpn", "112.11.22.11",
+                "aes-128-gcm", "9999", " ", "asdas123212adasdas", "64",
+                "tcp"));
 
 
         this.primaryStage = primaryStage;
@@ -89,8 +109,8 @@ public class Main extends Application {
             //set server overview into the center of root layout
             rootlayout.setCenter(ServerTable);
 
-//            ServerTableController controller = loader.getController();
-//            controller.setMain(this);
+            ServerTableController controller = loader.getController();
+            controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -148,6 +168,11 @@ public class Main extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+    public ObservableList<Server> getServersData() {
+        return serversData;
+    }
+
 
     public ObservableList<Person> getPersonData() {
         return personData;
