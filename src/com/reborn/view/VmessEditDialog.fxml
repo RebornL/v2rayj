@@ -95,12 +95,13 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" opacity="0.97" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button alignment="BASELINE_RIGHT" mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="61.0" style="-fx-text-alignment: center;-fx-end-margin: 10px;" text="确定">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="61.0" style="-fx-text-alignment: center" text="取消" />
          </children>
-         <opaqueInsets>
-            <Insets right="31.0" />
-         </opaqueInsets>
+
       </HBox>
    </bottom>
 </BorderPane>

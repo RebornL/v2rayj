@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -10,10 +11,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reborn.controller.VmessEditDialogController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -91,4 +92,17 @@
          </children>
       </GridPane>
    </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" opacity="0.97" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="确定"
+                    style="-fx-text-alignment: center;-fx-end-margin: 10px;">
+               <opaqueInsets>
+                  <Insets top="31.0" />
+               </opaqueInsets></Button>
+            <Button alignment="BASELINE_RIGHT" mnemonicParsing="false" prefHeight="23.0" prefWidth="61.0" text="取消" style="-fx-text-alignment: center" />
+         </children>
+
+      </HBox>
+   </bottom>
 </BorderPane>
