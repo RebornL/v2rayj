@@ -18,9 +18,9 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="菜单">
             <items>
-              <MenuItem mnemonicParsing="false" text="导入配置文件" />
+              <MenuItem mnemonicParsing="false" text="导入配置文件" onAction="#handleFileOpen" />
             </items>
           </Menu>
         </menus>
@@ -95,12 +95,17 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" opacity="0.97" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="确定"
-                    style="-fx-text-alignment: center;-fx-end-margin: 10px;">
+            <Button mnemonicParsing="false" prefHeight="23.0"
+                    prefWidth="61.0"
+                    style="-fx-text-alignment: center;-fx-end-margin: 10px;"
+                    text="确定" onAction="#handleOk">
                <opaqueInsets>
-                  <Insets top="31.0" />
+                  <Insets />
                </opaqueInsets></Button>
-            <Button alignment="BASELINE_RIGHT" mnemonicParsing="false" prefHeight="23.0" prefWidth="61.0" text="取消" style="-fx-text-alignment: center" />
+            <Button alignment="CENTER" mnemonicParsing="false"
+                    prefHeight="23.0" prefWidth="61.0"
+                    style="-fx-text-alignment: center" text="取消"
+                    onAction="#handleCancel"/>
          </children>
 
       </HBox>

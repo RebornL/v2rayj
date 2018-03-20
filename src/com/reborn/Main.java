@@ -1,9 +1,7 @@
 package com.reborn;
 
-import com.reborn.controller.PersonEditDialogController;
-import com.reborn.controller.ServerTableController;
+import com.reborn.controller.*;
 import com.reborn.model.Person;
-import com.reborn.controller.PersonOverviewController;
 import com.reborn.model.Server;
 import com.reborn.model.Vmess;
 import javafx.application.Application;
@@ -87,9 +85,13 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/RootLayout.fxml"));
             rootlayout = (BorderPane) loader.load();
+            RootController controller = loader.getController();
+            controller.setMain(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         //show the scene containing the root layout
         primaryStage.setScene(new Scene(rootlayout));
@@ -114,6 +116,41 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean showVmessEditDialog(Vmess vmess) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/VmessEditDialog" +
+                    ".fxml"));
+            BorderPane page = (BorderPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Vmess");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            VmessEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setVmess(vmess);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public ObservableList<Server> getServerData() {
+        return serversData;
     }
 
     private void showPersonOverview() {

@@ -1,13 +1,16 @@
 package com.reborn.controller;
 
+import com.reborn.Main;
+import com.reborn.model.Vmess;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
 public class RootController {
+    private Main main;
 
-    @FXML
+    /*@FXML
     private void handleOpen() {
         FileChooser fileChooser = new FileChooser();
 
@@ -22,5 +25,19 @@ public class RootController {
 //        if (file != null) {
 ////            main.loadPersonDataFromFile(file);
 //        }
+    }*/
+
+    @FXML
+    private void handleOpenVmessEditDialog() {
+        Vmess tempVmess = new Vmess();
+        boolean okClicked = main.showVmessEditDialog(tempVmess);
+        if (okClicked) {
+            //add the new person into table
+            main.getServersData().add(tempVmess);
+        }
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 }

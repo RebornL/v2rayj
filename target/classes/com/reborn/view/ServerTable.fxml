@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reborn.controller.ServerTableController">
+   <children>
+      <TableView fx:id="serverTable" prefHeight="400.0" prefWidth="600.0"
+                  style="-fx-border-color: black; -fx-background-insets: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn prefWidth="22.0" fx:id="flagColumn" />
+          <TableColumn prefWidth="109.0" text="服务器" fx:id="nameColumn"/>
+          <TableColumn prefWidth="83.0" text="别名" fx:id="remarkColumn"/>
+          <TableColumn prefWidth="86.0" text="地址" fx:id="addressColumn"/>
+          <TableColumn prefWidth="75.0" text="端口" fx:id="portColumn"/>
+          <TableColumn prefWidth="75.0" text="加密方式" fx:id="securityColumn"/>
+          <TableColumn prefWidth="83.0" text="延迟" fx:id="delayColumn"/>
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
