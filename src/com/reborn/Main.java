@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -26,6 +27,8 @@ public class Main extends Application {
             .observableArrayList();
     private ObservableList<Server> serversData = FXCollections
             .observableArrayList();
+
+    private TextArea textArea;
 
 
 
@@ -64,6 +67,8 @@ public class Main extends Application {
 
         initRootLayout();
         showServerTable();
+        showTerminalMessageBox();
+//        showVmessEditDialog();
 //        showPersonOverview();
 
 
@@ -78,6 +83,8 @@ public class Main extends Application {
         */
     }
 
+
+
     private void initRootLayout() {
 
         try {
@@ -88,6 +95,8 @@ public class Main extends Application {
             RootController controller = loader.getController();
             controller.setMain(this);
 
+            // textarea初始化
+            this.textArea = new TextArea();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,8 +122,61 @@ public class Main extends Application {
 
             ServerTableController controller = loader.getController();
             controller.setMain(this);
+            controller.setTextArea(this.getTextArea());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void showTerminalMessageBox() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("view/TerminalMessageBox" +
+                ".fxml"));
+        try {
+            AnchorPane messageBox = (AnchorPane)loader.load();
+            rootlayout.setRight(messageBox);
+
+//            ServerTableController controller = loader.getController();
+            TerminalMessageBoxController controller = loader.getController();
+            controller.setTextArea(this.getTextArea());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showVmessEditDialog() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/VmessEditDialog" +
+                    ".fxml"));
+            BorderPane page = (BorderPane) loader.load();
+
+            rootlayout.setRight(page);
+
+
+            VmessEditDialogController controller = loader.getController();
+
+            // Create the dialog Stage.
+            /*Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Vmess");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);*/
+
+            // Set the person into the controller.
+            /*VmessEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setVmess(vmess);*/
+
+            // Show the dialog and wait until the user closes it
+            // dialogStage.showAndWait();
+
+//            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+//            return false;
         }
     }
 
@@ -210,9 +272,12 @@ public class Main extends Application {
         return serversData;
     }
 
-
     public ObservableList<Person> getPersonData() {
         return personData;
+    }
+
+    public TextArea getTextArea() {
+        return textArea;
     }
 
     public static void main(String[] args) {

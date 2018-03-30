@@ -48,9 +48,6 @@ public class VmessEditDialogController {
         securityBox.getItems().addAll(
                 "aes-128-cfb",
                 "aes-128-cfb"
-//                "ethan.williams@example.com",
-//                "emma.jones@example.com",
-//                "michael.brown@example.com"
         );
     }
 
@@ -129,11 +126,18 @@ public class VmessEditDialogController {
 //            dialogStage.close();
 //        }
         // 暂无验证功能
-        //ToDO: 后续需要增加验证输入内容是否合法
+        //TODO: 后续需要增加验证输入内容是否合法
         if (vmess != null) {
             okClicked = true;
             dialogStage.close();
         }
+
+        generateJSON(vmess);
+    }
+
+    private void generateJSON(Vmess vmess) {
+        //TODO：生成一个json的config的配置文件
+        
     }
 
     @FXML
